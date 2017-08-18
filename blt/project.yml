@@ -1,9 +1,9 @@
 project:
   machine_name: migratedemo
-  prefix: BLT
-  human_name: 'BLTed 8'
+  prefix: MD
+  human_name: 'Migrate Demo'
   profile:
-    name: lightning
+    name: standard
   local:
     protocol: http
     hostname: 'local.${project.machine_name}.com'
