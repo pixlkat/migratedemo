@@ -12,7 +12,8 @@
         "drush/drush": "^8.1.8",
         "drupal/migrate_plus": "^4.0.0",
         "drupal/migrate_tools": "^4.0.0",
-        "drupal/migrate_source_csv": "^2.0"
+        "drupal/migrate_source_csv": "^2.0",
+        "drupal/redirect": "^1.0"
     },
     "require-dev": {
         "behat/behat": "^3.1",
