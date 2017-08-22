@@ -1,0 +1,82 @@
+id: demo_articles
+label: 'Demo Article Content'
+migration_group: demo_content
+migration_tags: { }
+source:
+  plugin: csv
+  header_row_count: 1
+  keys:
+    - id
+  column_names:
+    0:
+      id: ID
+    1:
+      title: Title
+    2:
+      summary: Summary
+    3:
+      contenttext: ContentText
+    4:
+      tags: Tags
+    5:
+      createtime: CreateTime
+    6:
+      lasttime: LastTime
+    7:
+      searchkeywords: SearchKeywords
+    8:
+      friendlyurl: FriendlyUrl
+    9:
+      categorylist: CategoryList
+process:
+  type:
+    plugin: default_value
+    default_value: demo_content_article
+  uid:
+    plugin: default_value
+    default_value: 1
+  status:
+    plugin: default_value
+    default_value: 1
+  created:
+    plugin: callback
+    callable: strtotime
+    source: createtime
+  updated:
+    plugin: callback
+    callable: strtotime
+    source: lasttime
+  title: title
+  body/summary: summary
+  body/format:
+    plugin: default_value
+    default_value: full_html
+  body/value:
+    plugin: html_entity_decode
+    source: contenttext
+  field_tags:
+    plugin: entity_generate
+    source: tags
+    ignore_case: true
+  field_demo_content_keywords:
+    plugin: entity_generate
+    source: searchkeywords
+    ignore_case: true
+  field_demo_content_categories:
+    -
+      plugin: skip_on_empty
+      source: categorylist
+      method: process
+    -
+      plugin: migration_lookup
+      migration: demo_categories
+      source: categorylist
+destination:
+  plugin: 'entity:node'
+migration_dependencies:
+  required:
+    - demo_categories
+dependencies:
+  enforced:
+    module:
+      - migrate_demo_content

@@ -1,0 +1,37 @@
+id: demo_categories
+label: 'Demo Content Categories'
+migration_group: demo_content
+migration_tags: { }
+source:
+  plugin: csv
+  header_row_count: 1
+  keys:
+    - id
+  column_names:
+    0:
+      id: ID
+    1:
+      parentid: ParentId
+    2:
+      name: Name
+    3:
+      contenttext: ContentText
+    4:
+      lasttime: LastTime
+process:
+  name: name
+  description: contenttext
+  vid:
+    plugin: default_value
+    default_value: demo_content_categories
+  parent:
+    plugin: migration_lookup
+    migration: demo_categories
+    source: parentid
+destination:
+  plugin: 'entity:taxonomy_term'
+migration_dependencies: { }
+dependencies:
+  enforced:
+    module:
+      - migrate_demo_content

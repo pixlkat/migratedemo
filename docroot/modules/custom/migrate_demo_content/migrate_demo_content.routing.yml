@@ -1,0 +1,7 @@
+migrate_demo_content.configuration:
+  path: '/admin/structure/migrate/migrate_demo_content'
+  defaults:
+    _title: 'Configure Demo Content Migration'
+    _form: '\Drupal\migrate_demo_content\Form\MigrationConfigurationForm'
+  requirements:
+    _permission: 'configure demo content migration'

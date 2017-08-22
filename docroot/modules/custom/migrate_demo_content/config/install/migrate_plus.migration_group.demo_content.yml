@@ -1,0 +1,7 @@
+id: demo_content
+label: Demo Content Imports
+description: Demo content migration from CSV files
+dependencies:
+  enforced:
+    module:
+      - migrate_demo_content

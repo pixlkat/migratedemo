@@ -1,0 +1,8 @@
+name: Migrate Demo Content
+description: 'Migrate demo content for the migrate demo site.'
+type: module
+core: 8.x
+dependencies:
+  - drupal:migrate
+  - migrate_plus:migrate_plus
+  - migrate_source_csv:migrate_source_csv
