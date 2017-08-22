@@ -1,0 +1,14 @@
+uuid: 47c9a0b4-4739-4fb5-9099-960dacacefd0
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.demo_content_article_creator
+  module:
+    - user
+id: user_add_role_action.demo_content_article_creator
+label: 'Add the Demo Content Article creator role to the selected users'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: demo_content_article_creator

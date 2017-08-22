@@ -1,0 +1,18 @@
+uuid: 87f902f4-260f-4cdd-af91-5fc6e032e98b
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: 'Demo Content Article'
+type: demo_content_article
+description: 'Demo content articles'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

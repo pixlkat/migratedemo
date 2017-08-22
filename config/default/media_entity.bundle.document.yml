@@ -1,0 +1,19 @@
+uuid: 4ddaf950-50e7-4db0-807a-62c849453d77
+langcode: en
+status: true
+dependencies:
+  module:
+    - media_entity_document
+_core:
+  default_config_hash: z3Rg1Ph33UolWA-a75r9XUbRP9zF9CAYiRHaH3ztqwY
+id: document
+label: Document
+description: 'A locally hosted document, such a PDF.'
+type: document
+queue_thumbnail_downloads: false
+new_revision: false
+type_configuration:
+  source_field: field_document
+field_map:
+  mime: field_mime_type
+  size: field_document_size

@@ -1,0 +1,9 @@
+uuid: 2616470a-01c3-45d4-9b56-8793aa268302
+langcode: en
+status: true
+dependencies: {  }
+name: 'Demo Content Categories'
+vid: demo_content_categories
+description: 'Categories for demo content'
+hierarchy: 0
+weight: 0

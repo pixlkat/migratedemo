@@ -1,0 +1,28 @@
+uuid: ea132761-5e65-4bfd-bb18-b65c681a7adc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_demo_content_keywords
+    - node.type.demo_content_article
+    - taxonomy.vocabulary.demo_content_keywords
+id: node.demo_content_article.field_demo_content_keywords
+field_name: field_demo_content_keywords
+entity_type: node
+bundle: demo_content_article
+label: 'Demo Content Keywords'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      demo_content_keywords: demo_content_keywords
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
