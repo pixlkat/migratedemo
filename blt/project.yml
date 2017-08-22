@@ -3,7 +3,7 @@ project:
   prefix: MD
   human_name: 'Migrate Demo'
   profile:
-    name: standard
+    name: lightning
   local:
     protocol: http
     hostname: 'local.${project.machine_name}.com'
