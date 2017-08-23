@@ -23,10 +23,12 @@ source:
     6:
       lasttime: LastTime
     7:
-      searchkeywords: SearchKeywords
+      createuser: CreateUser
     8:
-      friendlyurl: FriendlyUrl
+      searchkeywords: SearchKeywords
     9:
+      friendlyurl: FriendlyUrl
+    10:
       categorylist: CategoryList
 process:
   type:
@@ -55,22 +57,38 @@ process:
     plugin: html_entity_decode
     source: contenttext
   field_tags:
-    plugin: entity_generate
-    source: tags
-    ignore_case: true
+    -
+      plugin: skip_on_empty
+      method: process
+      source: tags
+    -
+      plugin: explode
+      delimiter: ','
+    -
+      plugin: entity_generate
+      ignore_case: true
   field_demo_content_keywords:
-    plugin: entity_generate
-    source: searchkeywords
-    ignore_case: true
+    -
+      plugin: skip_on_empty
+      method: process
+      source: searchkeywords
+    -
+      plugin: explode
+      delimiter: ','
+    -
+      plugin: entity_generate
+      ignore_case: true
   field_demo_content_categories:
     -
       plugin: skip_on_empty
       source: categorylist
       method: process
     -
+      plugin: explode
+      delimiter: ','
+    -
       plugin: migration_lookup
       migration: demo_categories
-      source: categorylist
 destination:
   plugin: 'entity:node'
 migration_dependencies:

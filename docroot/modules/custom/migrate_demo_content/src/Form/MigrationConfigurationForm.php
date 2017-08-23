@@ -4,6 +4,7 @@ namespace Drupal\migrate_demo_content\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\migrate_plus\Entity\Migration;
 
 /**
  * Configuration form for the Demo Content migration.
