@@ -4,30 +4,29 @@ migration_group: demo_content
 migration_tags: { }
 source:
   plugin: csv
+  path: modules/custom/migrate_demo_content/data/demo_categories.csv
   header_row_count: 1
   keys:
     - id
   column_names:
-    0:
+    -
       id: ID
-    1:
-      parentid: ParentId
-    2:
+    -
+      parent_id: 'Parent ID'
+    -
       name: Name
-    3:
-      contenttext: ContentText
-    4:
-      lasttime: LastTime
+    -
+      description: description
 process:
   name: name
-  description: contenttext
+  description: description
   vid:
     plugin: default_value
-    default_value: demo_content_categories
+    default_value: demo_categories
   parent:
     plugin: migration_lookup
     migration: demo_categories
-    source: parentid
+    source: parent_id
 destination:
   plugin: 'entity:taxonomy_term'
 migration_dependencies: { }

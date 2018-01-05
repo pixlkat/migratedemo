@@ -1,5 +1,0 @@
-migrate_demo_content.add_group_action:
-  route_name: migrate_demo_content.configuration
-  title: 'Configure Demo Content migrations'
-  appears_on:
-    - entity.migration_group.list

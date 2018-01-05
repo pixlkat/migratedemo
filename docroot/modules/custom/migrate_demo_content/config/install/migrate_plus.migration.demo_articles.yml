@@ -4,36 +4,31 @@ migration_group: demo_content
 migration_tags: { }
 source:
   plugin: csv
+  path: modules/custom/migrate_demo_content/data/demo_content.csv
   header_row_count: 1
   keys:
     - id
   column_names:
-    0:
+    -
       id: ID
-    1:
+    -
       title: Title
-    2:
+    -
       summary: Summary
-    3:
-      contenttext: ContentText
-    4:
+    -
+      body: Body
+    -
       tags: Tags
-    5:
-      createtime: CreateTime
-    6:
-      lasttime: LastTime
-    7:
-      createuser: CreateUser
-    8:
-      searchkeywords: SearchKeywords
-    9:
-      friendlyurl: FriendlyUrl
-    10:
-      categorylist: CategoryList
+    -
+      created: Created
+    -
+      updated: Updated
+    -
+      category: Category
 process:
   type:
     plugin: default_value
-    default_value: demo_content_article
+    default_value: demo_article
   uid:
     plugin: default_value
     default_value: 1
@@ -43,11 +38,11 @@ process:
   created:
     plugin: callback
     callable: strtotime
-    source: createtime
+    source: created
   updated:
     plugin: callback
     callable: strtotime
-    source: lasttime
+    source: updated
   title: title
   body/summary: summary
   body/format:
@@ -55,7 +50,7 @@ process:
     default_value: full_html
   body/value:
     plugin: html_entity_decode
-    source: contenttext
+    source: body
   field_tags:
     -
       plugin: skip_on_empty
@@ -67,21 +62,10 @@ process:
     -
       plugin: entity_generate
       ignore_case: true
-  field_demo_content_keywords:
+  field_category:
     -
       plugin: skip_on_empty
-      method: process
-      source: searchkeywords
-    -
-      plugin: explode
-      delimiter: ','
-    -
-      plugin: entity_generate
-      ignore_case: true
-  field_demo_content_categories:
-    -
-      plugin: skip_on_empty
-      source: categorylist
+      source: category
       method: process
     -
       plugin: explode
