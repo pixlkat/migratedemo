@@ -1,9 +1,0 @@
-uuid: 92ea209c-aecd-4b63-89a0-1e90af97b719
-langcode: en
-status: true
-dependencies: {  }
-name: 'Demo Content Keywords'
-vid: demo_content_keywords
-description: 'Keywords in demo content'
-hierarchy: 0
-weight: 0

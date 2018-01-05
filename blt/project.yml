@@ -18,20 +18,20 @@ drush:
   default_alias: '${drush.aliases.local}'
 modules:
   local:
-    enable: { }
-    uninstall: { }
+    enable: {  }
+    uninstall: {  }
   ci:
     enable: {  }
-    uninstall: { }
+    uninstall: {  }
   dev:
-    enable: { }
+    enable: {  }
     uninstall: {  }
   test:
-    enable: { }
-    uninstall: { }
+    enable: {  }
+    uninstall: {  }
   prod:
-    enable: { }
-    uninstall: { }
+    enable: {  }
+    uninstall: {  }
 target-hooks:
   frontend-setup:
     dir: '${docroot}'
@@ -52,5 +52,3 @@ cm:
   strategy: config-split
 behat:
   web-driver: selenium
-vm:
-  enable: true

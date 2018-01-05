@@ -73,7 +73,9 @@
                 "type:drupal-drush"
             ],
             "docroot/libraries/{$name}": [
-                "type:drupal-library"
+                "type:drupal-library",
+                "type:bower-asset",
+                "type:npm-asset"
             ]
         },
         "merge-plugin": {
@@ -89,6 +91,10 @@
             "merge-scripts": true,
             "replace": false,
             "ignore-duplicates": true
-        }
+        },
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+        ]
     }
 }
