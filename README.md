@@ -1,6 +1,6 @@
-# My Project
+# Migrate Demo
 
-A brief description of My Project.
+The Migrate Demo project will contain examples of migrating content from various sources into a fictitious beer ratings site.
 
 ## BLT
 

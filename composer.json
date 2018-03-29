@@ -1,6 +1,6 @@
 {
-    "name": "acquia/blt-project",
-    "description": "Project template for Drupal 8 sites built with BLT.",
+    "name": "pixlkat/migratedemo",
+    "description": "Project to demonstrate migration concepts.",
     "type": "project",
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -21,7 +21,7 @@
         "drupal/devel": "^1.0.0-alpha1",
         "drupal/drupal-extension": "^3.2",
         "jakoch/phantomjs-installer": "^2.1.1-p07",
-        "geerlingguy/drupal-vm": "~4.3"
+        "geerlingguy/drupal-vm": "^4.8"
     },
     "repositories": {
         "drupal": {
