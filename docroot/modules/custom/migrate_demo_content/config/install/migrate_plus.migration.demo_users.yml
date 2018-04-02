@@ -1,0 +1,31 @@
+id: demo_users
+label: 'Demo Users'
+migration_group: demo_content
+migration_tags: { }
+source:
+  plugin: csv
+  path: modules/custom/migrate_demo_content/data/users.csv
+  header_row_count: 1
+  keys:
+    - user_id
+process:
+  name: username
+  pass: passwd
+  mail: email_address
+  created: created
+  changed: created
+  access: created
+  login: created
+  status:
+    plugin: default_value
+    default_value: 1
+  roles:
+    plugin: default_value
+    default_value: 2
+destination:
+  plugin: entity:user
+migration_dependencies: { }
+dependencies:
+  enforced:
+    module:
+      - migrate_demo_content

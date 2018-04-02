@@ -50,11 +50,14 @@ class ReplaceImages extends ProcessPluginBase implements ContainerFactoryPluginI
 
     $value = stripslashes($value);
     $value = str_replace('\"', '"', $value);
+    if (isset($this->configuration['base_uri']) && $this->configuration['base_uri']) {
+      $uri_match = '(' . $this->configuration['base_uri'] . ')?';
+    }
 
     // Replace image tags with media embed tokens.
     $this->migrateExecutable = $migrate_executable;
     $this->row = $row;
-    $pattern = '/<img .*src="(\/.*)".*>/Uis';
+    $pattern = '|<img .*src="(' . $uri_match . '/.*)".*>|Uis';
     $value = preg_replace_callback($pattern, [$this, 'replaceImgs'], $value);
     return $value;
   }

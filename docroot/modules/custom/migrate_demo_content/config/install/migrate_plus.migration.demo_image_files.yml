@@ -1,0 +1,50 @@
+id: demo_image_files
+label: 'Demo Article Image Filess'
+migration_group: demo_content
+migration_tags: { }
+source:
+  plugin: csv
+  path: modules/custom/migrate_demo_content/data/images.csv
+  header_row_count: 1
+  keys:
+    - filename
+  constants:
+    file_dest_base: 'public://images'
+    file_source_base: 'http://lorempixel.com/output'
+process:
+  source_uri:
+    -
+      plugin: concat
+      delimiter: /
+      source:
+        - constants/file_source_base
+        - filename
+    -
+      plugin: urlencode
+  dest_uri:
+    -
+      plugin: concat
+      delimiter: /
+      source:
+        - constants/file_dest_base
+        - filename
+    -
+      plugin: urlencode
+  uri:
+    plugin: file_copy
+    source:
+      - '@source_uri'
+      - '@dest_uri'
+  uid:
+    plugin: migration_lookup
+    source: user_id
+  created: created
+destination:
+  plugin: 'entity:file'
+migration_dependencies:
+  required:
+    - demo_users
+dependencies:
+  enforced:
+    module:
+      - migrate_demo_content

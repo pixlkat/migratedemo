@@ -1,0 +1,31 @@
+id: demo_locations
+label: 'Demo Event Locations'
+migration_group: demo_content
+migration_tags: { }
+source:
+  plugin: csv
+  path: modules/custom/migrate_demo_content/data/locations.csv
+  header_row_count: 1
+  keys:
+    - id
+process:
+  vid:
+    plugin: default_value
+    default_value: locations
+  name: name
+  description/value: description
+  description/format:
+    plugin: default_value
+    default_value: rich_text
+  field_venue_address/country_code: country
+  field_venue_address/administrative_area: state
+  field_venue_address/locality: city
+  field_venue_address/address_line1: address1
+  field_venue_address/address_line2: address2
+destination:
+  plugin: 'entity:taxonomy_term'
+migration_dependencies: { }
+dependencies:
+  enforced:
+    module:
+      - migrate_demo_content

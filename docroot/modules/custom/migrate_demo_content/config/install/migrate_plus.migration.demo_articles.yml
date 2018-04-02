@@ -4,64 +4,34 @@ migration_group: demo_content
 migration_tags: { }
 source:
   plugin: csv
-  path: modules/custom/migrate_demo_content/data/demo_content.csv
+  path: modules/custom/migrate_demo_content/data/articles.csv
   header_row_count: 1
   keys:
     - id
-  column_names:
-    -
-      id: ID
-    -
-      title: Title
-    -
-      summary: Summary
-    -
-      body: Body
-    -
-      tags: Tags
-    -
-      created: Created
-    -
-      updated: Updated
-    -
-      category: Category
 process:
   type:
     plugin: default_value
-    default_value: demo_article
+    default_value: article
   uid:
-    plugin: default_value
-    default_value: 1
-  status:
-    plugin: default_value
-    default_value: 1
-  created:
-    plugin: callback
-    callable: strtotime
-    source: created
-  updated:
-    plugin: callback
-    callable: strtotime
-    source: updated
+    -
+      plugin: migration_lookup
+      migration: demo_users
+      source: user_id
+      no_stub: true
+    -
+      plugin: default_value
+      default_value: 1
+  created: created
+  changed: changed
   title: title
   body/summary: summary
   body/format:
     plugin: default_value
     default_value: full_html
   body/value:
-    plugin: html_entity_decode
+    plugin: replace_images
     source: body
-  field_tags:
-    -
-      plugin: skip_on_empty
-      method: process
-      source: tags
-    -
-      plugin: explode
-      delimiter: ','
-    -
-      plugin: entity_generate
-      ignore_case: true
+    base_uri: 'http://lorempixel.com'
   field_category:
     -
       plugin: skip_on_empty
@@ -73,11 +43,16 @@ process:
     -
       plugin: migration_lookup
       migration: demo_categories
+  moderation_state:
+    plugin: default_value
+    default_value: published
 destination:
   plugin: 'entity:node'
 migration_dependencies:
   required:
     - demo_categories
+    - demo_users
+    - demo_image_media
 dependencies:
   enforced:
     module:

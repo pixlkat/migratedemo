@@ -4,29 +4,27 @@ migration_group: demo_content
 migration_tags: { }
 source:
   plugin: csv
-  path: modules/custom/migrate_demo_content/data/demo_categories.csv
+  path: modules/custom/migrate_demo_content/data/categories.csv
   header_row_count: 1
   keys:
     - id
-  column_names:
-    -
-      id: ID
-    -
-      parent_id: 'Parent ID'
-    -
-      name: Name
-    -
-      description: description
 process:
   name: name
-  description: description
+  description/value: description
+  description/format:
+    plugin: default_value
+    default_value: rich_text
   vid:
     plugin: default_value
-    default_value: demo_categories
+    default_value: categories
   parent:
-    plugin: migration_lookup
-    migration: demo_categories
-    source: parent_id
+    -
+      plugin: skip_on_empty
+      source: parent_id
+      method: process
+    -
+      plugin: migration_lookup
+      migration: demo_categories
 destination:
   plugin: 'entity:taxonomy_term'
 migration_dependencies: { }
