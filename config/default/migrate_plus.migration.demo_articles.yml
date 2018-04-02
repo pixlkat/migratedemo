@@ -1,0 +1,75 @@
+uuid: 879ec217-a089-4890-a566-92f412c78689
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - migrate_demo_content
+_core:
+  default_config_hash: ITr-7iCUCFLtMQRFghoOIVxd0QMs1pnl9dPSGj5dllE
+id: demo_articles
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: {  }
+migration_group: demo_content
+label: 'Demo Article Content'
+source:
+  plugin: csv
+  path: modules/custom/migrate_demo_content/data/articles.csv
+  header_row_count: 1
+  keys:
+    - id
+process:
+  type:
+    plugin: default_value
+    default_value: article
+  uid:
+    -
+      plugin: migration_lookup
+      migration: demo_users
+      source: user_id
+      no_stub: true
+    -
+      plugin: default_value
+      default_value: 1
+  created: created
+  changed: changed
+  title: title
+  body/summary: summary
+  body/format:
+    plugin: default_value
+    default_value: rich_text
+  body/value:
+    plugin: replace_images
+    source: body
+    base_uri: 'http://lorempixel.com'
+  field_category:
+    -
+      plugin: skip_on_empty
+      source: category
+      method: process
+    -
+      plugin: explode
+      delimiter: ','
+    -
+      plugin: migration_lookup
+      migration: demo_categories
+  field_article_image:
+    -
+      plugin: skip_on_empty
+      source: filename
+      method: process
+    -
+      plugin: migration_lookup
+      migration: demo_image_media
+  moderation_state:
+    plugin: default_value
+    default_value: published
+destination:
+  plugin: 'entity:node'
+migration_dependencies:
+  required:
+    - demo_categories
+    - demo_users
+    - demo_image_media

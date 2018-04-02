@@ -97,3 +97,8 @@ devel: 1.2.0
 devel_generate: 0.0.0
 realistic_dummy_content_api: 2.0.0
 realistic_dummy_content: 2.0.0
+migrate: 8.5.1
+migrate_plus: 4.0.0-beta3
+migrate_source_csv: 2.1.0
+migrate_tools: 4.0.0-beta3
+migrate_demo_content: 0.0.0

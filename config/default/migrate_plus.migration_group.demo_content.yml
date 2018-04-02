@@ -1,0 +1,15 @@
+uuid: 3eb4d09c-a933-4023-91cf-a0588146486a
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - migrate_demo_content
+_core:
+  default_config_hash: 3gr4TFRH1cTgKjCyyvpcsvsGdFEib9bweAh1oCTDa2M
+id: demo_content
+label: 'Demo Content Imports'
+description: 'Demo content migration from CSV files'
+source_type: null
+module: null
+shared_configuration: null

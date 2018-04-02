@@ -1,0 +1,53 @@
+uuid: 53c04e51-9e3a-4f64-80af-66bd86a9b216
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 31Bg9ufRrnwNEYvmqTrqtSruVSDmRLmHw5ibJdBbetI
+id: demo_events
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: {  }
+migration_group: demo_content
+label: 'Demo Event Content'
+source:
+  plugin: csv
+  path: modules/custom/migrate_demo_content/data/events.csv
+  header_row_count: 1
+  keys:
+    - id
+process:
+  type:
+    plugin: default_value
+    default_value: event
+  uid:
+    -
+      plugin: migration_lookup
+      migration: demo_users
+      source: user_id
+      no_stub: true
+    -
+      plugin: default_value
+      default_value: 1
+  title: title
+  body/value: body
+  body/summary: summary
+  body/format: rich_text
+  created: created
+  changed: changed
+  field_event_date/value: start_date
+  field_event_date/end_value: end_date
+  field_location/target_id:
+    plugin: migration_lookup
+    migration: demo_locations
+    source: location_id
+  moderation_state:
+    plugin: default_value
+    default_value: published
+destination:
+  plugin: 'entity:node'
+migration_dependencies:
+  required:
+    - demo_users
+    - demo_locations

@@ -1,0 +1,62 @@
+uuid: 27bab294-0b6d-4877-9caf-92dffcd9f122
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - migrate_demo_content
+_core:
+  default_config_hash: ctF1OBffwBcz5Tj_0X7qDLDdzQS5ob8a2dc36Uu91Bw
+id: demo_image_files
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: {  }
+migration_group: demo_content
+label: 'Demo Article Image Filess'
+source:
+  plugin: csv
+  path: modules/custom/migrate_demo_content/data/images.csv
+  header_row_count: 1
+  keys:
+    - filename
+  constants:
+    file_dest_base: 'public://images'
+    file_source_base: 'http://lorempixel.com/output'
+process:
+  source_uri:
+    -
+      plugin: concat
+      delimiter: /
+      source:
+        - constants/file_source_base
+        - filename
+    -
+      plugin: urlencode
+  dest_uri:
+    -
+      plugin: concat
+      delimiter: /
+      source:
+        - constants/file_dest_base
+        - filename
+    -
+      plugin: urlencode
+  uri:
+    plugin: file_copy
+    source:
+      - '@source_uri'
+      - '@dest_uri'
+  uid:
+    plugin: migration_lookup
+    migration: demo_users
+    source: user_id
+  created: created
+  status:
+    plugin: default_value
+    default_value: 1
+destination:
+  plugin: 'entity:file'
+migration_dependencies:
+  required:
+    - demo_users
