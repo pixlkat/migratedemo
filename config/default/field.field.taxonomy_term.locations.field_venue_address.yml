@@ -1,0 +1,36 @@
+uuid: 37aca954-9cd5-4771-a77a-e8bbc2c9d74c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_venue_address
+    - taxonomy.vocabulary.locations
+  module:
+    - address
+id: taxonomy_term.locations.field_venue_address
+field_name: field_venue_address
+entity_type: taxonomy_term
+bundle: locations
+label: 'Venue Address'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries:
+    US: US
+  fields:
+    administrativeArea: administrativeArea
+    locality: locality
+    dependentLocality: dependentLocality
+    postalCode: postalCode
+    sortingCode: sortingCode
+    addressLine1: addressLine1
+    addressLine2: addressLine2
+    organization: '0'
+    givenName: '0'
+    additionalName: '0'
+    familyName: '0'
+  langcode_override: ''
+field_type: address

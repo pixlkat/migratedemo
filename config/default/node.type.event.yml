@@ -1,0 +1,17 @@
+uuid: 7ad64f23-5397-41a6-8be8-3ec2c83b1372
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Event
+type: event
+description: 'Use this for calendar events.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

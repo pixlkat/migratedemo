@@ -1,0 +1,9 @@
+uuid: 8ef454bf-0022-40ec-92ef-1214401c8188
+langcode: en
+status: true
+dependencies: {  }
+name: Locations
+vid: locations
+description: 'Event Locations'
+hierarchy: 1
+weight: 0

@@ -1,0 +1,30 @@
+uuid: ddef58cc-75ca-463d-9125-6ab96c480b0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.locations.field_venue_address
+    - taxonomy.vocabulary.locations
+  module:
+    - address
+    - text
+id: taxonomy_term.locations.default
+targetEntityType: taxonomy_term
+bundle: locations
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_venue_address:
+    weight: 1
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
+hidden: {  }
