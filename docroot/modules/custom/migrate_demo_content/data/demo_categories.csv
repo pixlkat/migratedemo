@@ -1,8 +1,0 @@
-id,parent_id,name,description
-1,0,Food,"What's cooking in the kitchen"
-2,0,Beer,"What's on tap"
-3,1,Starters,
-4,1,Sandwiches,
-5,2,Always on Tap,These beers are always available in the brewery.
-6,2,Seasonal,Check out our limited edition beers. 
-7,0,Events,

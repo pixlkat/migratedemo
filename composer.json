@@ -13,7 +13,8 @@
         "drupal/migrate_tools": "^4.0.0",
         "drupal/migrate_source_csv": "^2.0",
         "drupal/redirect": "^1.0",
-        "drupal/paragraphs": "^1.1"
+        "drupal/paragraphs": "^1.1",
+        "drupal/address": "~1.0"
     },
     "require-dev": {
         "behat/behat": "^3.1",
